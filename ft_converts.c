@@ -60,23 +60,38 @@ int	convert_txt(const char *str, va_list args)
 int	convert_hexa(const char *str, va_list args)
 {
 	unsigned int	i;
+	char			*hexa;
+	int				size;
 
 	i = va_arg(args, unsigned int);
-	if ((int)i < 0)
-		i = i + 18446744073709551615U + 1;
 	if (*str == 'x')
-		return (ft_putstr_fd_len(ft_dectohex(i, 0), 1));
+	{	
+		hexa = ft_dectohex(i, "0123456789abcdef");
+		size = ft_putstr_fd_len(hexa, 1);
+		free(hexa);
+		return (size);
+	}
 	if (*str == 'X')
-		return (ft_putstr_fd_len(ft_dectohex(i, 1), 1));
+	{
+		hexa = ft_dectohex(i, "0123456789ABCDEF");
+		size = ft_putstr_fd_len(hexa, 1);
+		free(hexa);
+		return (size);
+	}
 	return (0);
 }
 
 int	convert_pointer(va_list args)
 {	
 	unsigned long long	i;
+	char				*hexa;
+	int					size;
 
 	i = va_arg(args, unsigned long long);
 	ft_putchar_fd('0', 1);
 	ft_putchar_fd('x', 1);
-	return (ft_putstr_fd_len(ft_dectohex(i, 0), 1) + 2);
+	hexa = ft_dectohex(i, "0123456789abcdef");
+	size = ft_putstr_fd_len(hexa, 1) + 2;
+	free(hexa);
+	return (size);
 }

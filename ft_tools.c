@@ -47,7 +47,6 @@ int	ft_strlen(char *str)
 
 char	*ft_strrev(char *str)
 {
-	char	temp;
 	int		size;
 	int		i;
 	char	*ret;
@@ -57,34 +56,31 @@ char	*ft_strrev(char *str)
 	if (size == 1)
 	{
 		ret[0] = str[0];
+		ret[1] = '\0';
 		return (ret);
 	}
 	size--;
 	i = 0;
-	while (i < size)
-	{
-		temp = str[i];
-		ret[i++] = str[size];
-		ret[size--] = temp;
-	}
-	ret[i + size + 1] = '\0';
+	while (size >= 0)
+		ret[i++] = str[size--];
+	ret[i] = '\0';
 	return (ret);
 }
 
-char	*ft_dectohex(unsigned long long n, int capitalize)
+char	*ft_dectohex(unsigned long long n, char *base)
 {
-	char	*base;
 	int		temp;
 	char	rtrn[99];
 	char	*ptr;
 	int		i;
 
 	if (n == 0)
-		return ("0");
-	if (capitalize)
-		base = "0123456789ABCDEF";
-	else
-		base = "0123456789abcdef";
+	{
+		ptr = malloc(2 * sizeof(char));
+		ptr[0] = '0';
+		ptr[1] = '\0';
+		return (ptr);
+	}
 	i = 0;
 	while (n > 0)
 	{
@@ -94,6 +90,5 @@ char	*ft_dectohex(unsigned long long n, int capitalize)
 	}
 	rtrn[i] = '\0';
 	ptr = ft_strrev(rtrn);
-	free(ptr);
 	return (ptr);
 }

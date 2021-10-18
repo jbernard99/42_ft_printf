@@ -5,18 +5,6 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbernard <marvin@42quebec.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/23 17:27:11 by jbernard          #+#    #+#             */
-/*   Updated: 2021/09/23 17:27:15 by jbernard         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbernard <marvin@42quebec.com>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 22:14:45 by jbernard          #+#    #+#             */
 /*   Updated: 2021/08/18 22:14:48 by jbernard         ###   ########.fr       */
 /*                                                                            */
@@ -46,7 +34,7 @@ void	ft_putchar_fd(char c, int fd);
 int		ft_strlen(char *str);
 char	*ft_strrev(char *str);
 int		ft_intlen(unsigned int x);
-char	*ft_dectohex(unsigned long long n, int capitalize);
+char	*ft_dectohex(unsigned long long n, char *base);
 int		ft_printf(const char *str, ...);
 
 #endif
